@@ -10,12 +10,10 @@ const connectDb = () => {
     })
     .then(console.log("Db is Connected"))
     .catch((err) => {
-      console.log("Db Connection issue");
       console.log("====================================");
       console.log(err);
+      console.log("Problem in connecting with DB");
       console.log("====================================");
-
-      process.exit(1);
     });
 };
 
