@@ -73,6 +73,9 @@ exports.logout = BigPromise(async (req, res, next) => {
   });
 });
 
+
+
+// admin routes
 exports.getAllUsers = BigPromise(async (req, res, next) => {
   const users = await User.find({});
 

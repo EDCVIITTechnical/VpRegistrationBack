@@ -1,7 +1,7 @@
 {
-  "name": "sparevest-backend",
+  "name": "vpback",
   "version": "1.0.0",
-  "description": "This is the backend API for the SpareVest App",
+  "description": "This is the backend API for the VP Registration App",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
