@@ -31,7 +31,6 @@ exports.getAllParticipants = BigPromise(async (req, res, next) => {
   const users = await Register.find({});
 
   res.status(200).json({
-    success: true,
     users,
   });
 });
