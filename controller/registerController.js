@@ -26,3 +26,12 @@ exports.RegisterForEvent = BigPromise(async (req, res, next) => {
     message: "You're successfully Registered for VP",
   });
 });
+
+exports.getAllUsers = BigPromise(async (req, res, next) => {
+  const users = await Register.find({});
+
+  res.status(200).json({
+    success: true,
+    users,
+  });
+});
