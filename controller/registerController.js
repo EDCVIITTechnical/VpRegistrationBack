@@ -27,7 +27,7 @@ exports.RegisterForEvent = BigPromise(async (req, res, next) => {
   });
 });
 
-exports.getAllUsers = BigPromise(async (req, res, next) => {
+exports.getAllParticipants = BigPromise(async (req, res, next) => {
   const users = await Register.find({});
 
   res.status(200).json({
