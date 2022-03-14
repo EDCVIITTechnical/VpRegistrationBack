@@ -3,30 +3,31 @@
 const BigPromise = require("../middlewares/BigPromise");
 const Razorpay = require("razorpay");
 const { createHmac } = require("crypto");
+require("dotenv").config();
 
-exports.createOrder = BigPromise(async (req, res, next) => {
+exports.createOrder = async (req, res, next) => {
   // create a new instance of razorpay
-  const instance = new Razorpay({
-    key_id: process.env.RAZORPAY_PUBKEY,
-    key_secret: process.env.RAZORPAY_SECKEY,
-  });
-  const options = {
-    amount: 15000,
-    currency: "INR",
-    receipt: "test_Receipt",
-  };
+  try {
+    const instance = new Razorpay({
+      key_id: process.env.RAZORPAY_PUBKEY,
+      key_secret: process.env.RAZORPAY_SECKEY,
+    });
 
-  const order = await instance.orders.create(options);
+    const options = {
+      amount: 15000, // amount in smallest currency unit
+      currency: "INR",
+      receipt: "receipt_order_74394",
+    };
 
-  if (!order) {
-    return res.status(500).send("Some error occured");
+    const order = await instance.orders.create(options);
+
+    if (!order) return res.status(500).send("Some error occured");
+
+    res.json(order);
+  } catch (error) {
+    res.status(500).send(error);
   }
-
-  res.status(200).json({
-    success: true,
-    order,
-  });
-});
+};
 
 exports.verifyPayment = BigPromise(async (req, res, next) => {
   const {
