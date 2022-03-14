@@ -22,8 +22,10 @@ app.use(cors());
 const home = require("./routes/home");
 const user = require("./routes/user");
 const register = require("./routes/register");
+const payment = require("./routes/paymentRoutes");
 // router middlewares
 app.use("/api/v1", home);
 app.use("/api/v1", user);
 app.use("/api/v1", register);
+app.use("api/v1/payment", payment);
 module.exports = app;
