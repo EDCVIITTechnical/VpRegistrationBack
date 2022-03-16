@@ -1,7 +1,7 @@
 /** @format */
 
 const express = require("express");
-const { RegisterForEvent, getAllParticipants } = require("../controller/registerController");
+const { RegisterForEvent, getAllParticipants, getAmbParticipants } = require("../controller/registerController");
 const router = express.Router();
 
 router.route("/registerEvent").post(RegisterForEvent);

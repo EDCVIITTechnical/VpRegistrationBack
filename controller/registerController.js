@@ -6,7 +6,8 @@ const cookieToken = require("../utils/cookieToken");
 const cloudinary = require("cloudinary");
 
 exports.RegisterForEvent = BigPromise(async (req, res, next) => {
-  const { firstName, lastName, email, phoneNumber, city, college } = req.body;
+  const { firstName, lastName, email, phoneNumber, city, college, code } =
+    req.body;
 
   if (!firstName || !lastName || !email || !city || !phoneNumber) {
     return next(new Error("Fields are missing!"));
@@ -19,6 +20,7 @@ exports.RegisterForEvent = BigPromise(async (req, res, next) => {
     phoneNumber,
     city,
     college,
+    code,
   });
 
   res.status(200).json({
@@ -34,3 +36,4 @@ exports.getAllParticipants = BigPromise(async (req, res, next) => {
     users,
   });
 });
+

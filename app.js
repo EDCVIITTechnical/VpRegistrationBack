@@ -23,9 +23,11 @@ const home = require("./routes/home");
 const user = require("./routes/user");
 const register = require("./routes/register");
 const payment = require("./routes/paymentRoutes");
+const campusAmb = require("./routes/campusamb");
 // router middlewares
 app.use("/api/v1", home);
 app.use("/api/v1", user);
 app.use("/api/v1", register);
 app.use("/api/v1/payment", payment);
+app.use("/api/v1", campusAmb);
 module.exports = app;

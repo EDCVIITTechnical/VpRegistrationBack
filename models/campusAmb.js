@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const Validator = require("validator");
 
-const registerSchema = new Schema({
+const campusAmbSchema = new Schema({
   firstName: {
     type: String,
     required: [true, "Please Enter Name"],
@@ -35,10 +35,6 @@ const registerSchema = new Schema({
     type: String,
     maxlength: [20, "Please Use Shortform For College Name"],
   },
-  code: {
-    type: mongoose.Schema.Types.String,
-    ref: "Register",
-  },
 });
 
-module.exports = mongoose.model("Register", registerSchema);
+module.exports = mongoose.model("CampusAmb", campusAmbSchema);
