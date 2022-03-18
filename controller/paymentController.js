@@ -52,6 +52,7 @@ exports.verifyPayment = BigPromise(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    msg:"Success",
     orderId: razorpayOrderId,
     paymentId: razorpayPaymentId,
   });
