@@ -26,6 +26,9 @@ exports.RegisterForEvent = BigPromise(async (req, res, next) => {
   res.status(200).json({
     success: true,
     message: "You're successfully Registered for VP",
+    firstName,
+    lastName,
+    email
   });
 });
 
@@ -36,4 +39,3 @@ exports.getAllParticipants = BigPromise(async (req, res, next) => {
     users,
   });
 });
-
