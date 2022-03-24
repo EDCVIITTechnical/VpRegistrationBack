@@ -14,7 +14,7 @@ exports.createOrder = async (req, res, next) => {
     });
 
     const options = {
-      amount: 15000, // amount in smallest currency unit
+      amount: 20000, // amount in smallest currency unit
       currency: "INR",
       receipt: "receipt_order_74394",
     };
