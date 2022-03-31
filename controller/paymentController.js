@@ -13,7 +13,7 @@ exports.createOrder = async (req, res, next) => {
       key_secret: process.env.RAZORPAY_SECKEY,
     });
     const options = {
-      amount: 20400, // amount in smallest currency unit
+      amount: 30630, // amount in smallest currency unit
       currency: "INR",
       receipt: "receipt_order_74394",
     };
