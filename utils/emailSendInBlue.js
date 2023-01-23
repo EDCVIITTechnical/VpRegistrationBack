@@ -6,13 +6,13 @@ const sendInBlue = async ({ firstName, to, subject, html }) => {
   try {
     const emailResponse = await emailApi.sendTransacEmail({
       subject,
-      sender: { email: "vpadale86@gmail.com", name: "Team Vishwapreneur" },
+      sender: { email: "contact@vishwapreneur.in", name: "Team Vishwapreneur" },
       replyTo: {
         email: "contact@vishwapreneur.in",
         name: "Team Vishwapreneur",
       },
       to: [{ name: firstName, email: to }],
-      htmlContent: "<strong>report to office immediately!</strong>",
+      htmlContent: html,
       params: { bodyMessage: "Made just for you!" },
     });
     return emailResponse.data;

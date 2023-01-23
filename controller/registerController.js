@@ -14,7 +14,8 @@ const sendRegistrationEmail = async (firstName, email) => {
   const subject = "Welcome to Vishwapreneur";
   // try {
   const registrationTemplate = await fs.readFileSync(
-    path.join(process.cwd(), "./emailTemplate/registration.html")
+    path.join(process.cwd(), "/EmailTemplate/registration.html"),
+    "utf-8"
   );
   const html = registrationTemplate.toString();
   let emailDetails = await sendInBlue({ firstName, email, subject, html });
@@ -33,6 +34,18 @@ const sendRegistrationEmail = async (firstName, email) => {
   // }
 };
 
+// exports.sendRegistrsationEmail = BigPromise(async (email) => {
+//   const subject = "Welcome to Vishwapreneur";
+//   const text = "hello world";
+//   const RegistationTemplate = await fs.readFile(
+//     path.join(process.cwd(), "/EmailTemplate/registration.html"),
+//     "utf-8"
+//   );
+//   let html = RegistationTemplate.toString();
+//   const emailDetails = await sendEmailSG({ to: email, subject, text, html });
+//   return emailDetails;
+// });
+
 exports.RegisterForEvent = BigPromise(async (req, res, next) => {
   const { firstName, lastName, email, phoneNumber, city, college, code } =
     req.body;
@@ -43,26 +56,24 @@ exports.RegisterForEvent = BigPromise(async (req, res, next) => {
 
   const user = await Register.create(req.body);
   console.log("code reached before mail sending ");
-  axios({
-    method: "post",
-    url: "https://registration-back-k5iw.onrender.com/api/v1/sendMail",
-    data: {
+  let responseMail = axios
+    .post("https://registration-back-k5iw.onrender.com/api/v1/sendMail", {
       firstName: firstName,
       to: email,
-      subject: "Welcome to Vishwapreneur",
-    },
-  })
-    .then((response) => {
-      console.log(response.data);
+      subject: "WelCome to VP",
     })
-    .catch((error) => {
-      console.log(error);
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.log(err.data);
     });
   console.log("Code reached here after mail sending");
   res.status(200).json({
     success: true,
     message: "You're successfully Registered for VP",
     data: user,
+    responseMail,
   });
   // } catch (error) {
   // res.status(400).json({
