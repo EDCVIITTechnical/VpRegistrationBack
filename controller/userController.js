@@ -136,7 +136,7 @@ exports.sendEmailSendBlue = async (req, res) => {
   try {
     const { firstName, to, subject } = req.body;
     const registrationTemplate = await fs.readFileSync(
-      path.join(process.cwd(), "/emailTemplate/registration.html"),
+      path.join(process.cwd(), "../EmailTemplate/registration.html"),
       "utf-8"
     );
     const html = registrationTemplate.toString();
